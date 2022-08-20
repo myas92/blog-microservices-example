@@ -1,8 +1,13 @@
 const epxress = require('express');
 const { randomBytes } = require('crypto');
 const bodyParser = require('body-parser');
+const cors = require('cors');
+
 const app = epxress();
-app.use(bodyParser.json())
+app.use(bodyParser.json());
+app.use(cors());
+
+
 const posts = {};
 app.get('/posts', (req, res) => {
     res.send(posts)
@@ -18,6 +23,6 @@ app.post('/posts', (req, res) => {
 })
 
 
-app.listen(4000, ()=>{
+app.listen(4000, () => {
     console.log('Listening on 4000');
 })
