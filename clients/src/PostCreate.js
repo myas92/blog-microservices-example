@@ -3,7 +3,7 @@ import axios from 'axios'
 
 
 function PostCreate() {
-    const [ title, setTitle ] = useState('');
+    const [title, setTitle] = useState('');
 
     const onSubmit = async (event) => {
         event.preventDefault();
@@ -16,12 +16,15 @@ function PostCreate() {
         <>
             <form onSubmit={onSubmit}>
                 <div className='form-group'>
-                    <label htmlFor="x">Title</label>
-                    <input type="text" id="x"
-                        className='form-control'
-                        value={title}
-                        onChange={e => setTitle(e.target.value)}
-                    />
+                    <div className="mb-3">
+                        <label htmlFor="x">Title</label>
+                        <input type="text" id="x"
+                            className='form-control'
+                            value={title}
+                            onChange={e => setTitle(e.target.value)}
+                        />
+                    </div>
+
                 </div>
 
                 <button className='btn btn-primary'>Submit</button>
