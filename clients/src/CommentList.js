@@ -5,7 +5,7 @@ export default ({ postId }) => {
     const [comments, setComments] = useState([])
 
     async function fetchComments() {
-        const { data } = await axios.get(`http://localhost:4005/posts/${postId}/comments`);
+        const { data } = await axios.get(`http://localhost:5001/posts/${postId}/comments`);
         setComments(data);
     }
 
