@@ -21,8 +21,8 @@ app.post('/posts', async (req, res) => {
         id, title
     }
 
-    await axios.post('http://localhost:5005/event', {
-        type: 'PostCreatedpost',
+    await axios.post('http://localhost:5005/events', {
+        type: 'PostCreated',
         data: {
             id,
             title
@@ -31,6 +31,10 @@ app.post('/posts', async (req, res) => {
     res.status(201).send(posts[id])
 })
 
+app.post('/events', (req, res) => {
+    console.log(req.body.type)
+    res.send({})
+})
 
 app.listen(5000, () => {
     console.log('Listening on 5000');
