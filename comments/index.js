@@ -23,7 +23,8 @@ app.post('/posts/:id/comments', async (req, res) => {
         type: 'CommentCreated',
         data: {
             id: commentId,
-            content
+            content,
+            postId: req.params.id
         }
     })
     commentsByPostId[req.params.id] = comments;
