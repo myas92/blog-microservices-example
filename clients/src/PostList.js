@@ -6,7 +6,7 @@ export default () => {
     const [posts, setPost] = useState({})
 
     const fetchPosts = async () => {
-        let { data } = await axios.get('http://localhost:5000/posts');
+        let { data } = await axios.get('http://localhost:5002/posts'); // Get data from Query Service
         setPost(data);
     }
 
@@ -19,7 +19,8 @@ export default () => {
             <div className='card' style={{ width: '25rem' }} key={post.id}>
                 <div className='card-body'>
                     <h5 className='card-title'>{post.title}</h5>
-                    <CommentList postId={post.id} />
+                    {/* <CommentList postId={post.id} /> */}
+                    <CommentList comments={post.comments} />
                     <CommentCreate postId={post.id} />
                 </div>
             </div>

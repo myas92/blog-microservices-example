@@ -3,10 +3,10 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-const posts = [];
+const posts = {};
+app.use(cors());
 app.use(bodyParser.json())
 
-app.use(cors());
 app.get('/posts', (req, res) => {
     res.send(posts)
 })
