@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
-const posts = {};
+const posts = { 'ali': 'first' };
 app.get('/posts', (req, res) => {
     res.send(posts)
 })
@@ -21,7 +21,7 @@ app.post('/posts', async (req, res) => {
         id, title
     }
 
-    await axios.post('http://localhost:5005/events', {
+    await axios.post('http://event-bus-srv:5005/events', {
         type: 'PostCreated',
         data: {
             id,
@@ -37,5 +37,6 @@ app.post('/events', (req, res) => {
 })
 
 app.listen(5000, () => {
+    console.log('v56')
     console.log('Listening on 5000');
 })
