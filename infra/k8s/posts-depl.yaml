@@ -19,7 +19,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: posts-clusterip-srv # چون برای این پاد هم
+  name: posts-clusterip-srv # چون برای این پاد یک نود پورت ایجاد کردیم اسم این را تغییر دادیم
 spec:
   type: ClusterIP #  اختیاری هست چون بصورت پیش فرض این مقدار را دارد
   selector:

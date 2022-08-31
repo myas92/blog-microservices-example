@@ -1,0 +1,163 @@
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: ingress-srv
+#   labels:
+#     name: ingress-srv
+#   annotations:
+#     kubernetes.io/ingress.class: nginx   
+# spec:
+#   rules:
+#   - host: posts.com
+#     http:
+#       paths:
+#       - pathType: Prefix
+#         path: "/posts"
+#         backend:
+#           service:
+#             name: posts-clusterip-srv
+#             port: 
+#               number: 80
+
+
+
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: ingress-srv
+# spec:
+#   rules:
+#   - host: posts.com
+#     http:
+#       paths:
+#       - path: /posts
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: posts-clusterip-srv
+#             port:
+#               number: 5000
+
+
+# apiVersion: networking.k8s.io/v1
+# kind: IngressClass
+# metadata:
+#   labels:
+#     app.kubernetes.io/component: controller
+#   name: nginx-example
+#   annotations:
+#     ingressclass.kubernetes.io/is-default-class: "true"
+# spec:
+#   controller: k8s.io/ingress-nginx
+
+
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: ingress-srv
+#   annotations:
+#     kubernetes.io/ingress.class: nginx   
+# spec:
+#   ingressClassName: nginx-example
+#   rules:
+#   - http:
+#       paths:
+#       - path: /posts
+#         pathType: ImplementationSpecific
+#         backend:
+#           service:
+#             name: posts-clusterip-srv
+#             port:
+#               number: 5000
+
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: basic-ingress
+# spec:
+#   defaultBackend:
+#     service:
+#       name: web
+#       port:
+#         number: 8080
+
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: minimal-ingress
+#   annotations:
+#     nginx.ingress.kubernetes.io/rewrite-target: /
+# spec:
+#   ingressClassName: nginx-example
+#   rules:
+#   - http:
+#       paths:
+#       - path: /testpath
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: test
+#             port:
+#               number: 80
+
+
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: ingress-resource-backend
+# spec:
+#   defaultBackend:
+#     resource:
+#       apiGroup: k8s.example.com
+#       kind: StorageBucket
+#       name: static-assets
+#   rules:
+#     - http:
+#         paths:
+#           - path: /icons
+#             pathType: ImplementationSpecific
+#             backend:
+#               resource:
+#                 apiGroup: k8s.example.com
+#                 kind: StorageBucket
+#                 name: icon-assets
+
+
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: ingress-wildcard-host
+# spec:
+#   rules:
+#   - host: "foo.bar.com"
+#     http:
+#       paths:
+#       - pathType: Prefix
+#         path: "/bar"
+#         backend:
+#           service:
+#             name: service1
+#             port:
+#               number: 80
+#   - host: "*.foo.com"
+#     http:
+#       paths:
+#       - pathType: Prefix
+#         path: "/foo"
+#         backend:
+#           service:
+#             name: service2
+#             port:
+#               number: 80
+
+
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: external-lb
+spec:
+  controller: example.com/ingress-controller
+  parameters:
+    apiGroup: k8s.example.com
+    kind: IngressParameters
+    name: external-lb

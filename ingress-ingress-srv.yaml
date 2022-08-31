@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{},"labels":{"name":"ingress-srv"},"name":"ingress-srv","namespace":"default"},"spec":{"rules":[{"host":"posts.com","http":{"paths":[{"backend":{"service":{"name":"posts-clusterip-srv","port":{"number":5000}}},"path":"/posts","pathType":"Prefix"}]}}]}}
+  creationTimestamp: "2022-08-31T06:08:08Z"
+  generation: 1
+  labels:
+    name: ingress-srv
+  name: ingress-srv
+  namespace: default
+  resourceVersion: "5033"
+  uid: f7882a6b-5674-4150-bd2d-60b0d5cfeee4
+spec:
+  rules:
+  - host: posts.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: posts-clusterip-srv
+            port:
+              number: 5000
+        path: /posts
+        pathType: Prefix
+status:
+  loadBalancer: {}
