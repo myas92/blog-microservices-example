@@ -6,7 +6,7 @@ export default () => {
     const [posts, setPost] = useState({})
 
     const fetchPosts = async () => {
-        let { data } = await axios.get('http://localhost:5002/posts'); // Get data from Query Service
+        let { data } = await axios.get('http://posts.com/posts'); // Get data from Query Service
         console.log(data)
         setPost(data);
     }
