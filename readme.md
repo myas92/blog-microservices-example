@@ -5,7 +5,7 @@
 2- [Install Ingress Nginx](https://kubernetes.github.io/ingress-nginx/deploy/)
 
 ```bash
-# Get last version based on kubernetes version
+# Get corect version of ingress-nginx based on kubernetes version
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.3.0/deploy/static/provider/cloud/deploy.yaml
 ```
 
